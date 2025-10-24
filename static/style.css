@@ -164,3 +164,120 @@ footer {
   background: #93c5fd;
   color: white;
 }
+
+
+
+/* Responsive adjustments for tablets and phones */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .hero img {
+    width: 300px;
+    margin-top: 1.5rem;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  aside {
+    width: 180px;
+  }
+
+  .input-section,
+  .operations,
+  canvas {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  nav h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  input {
+    width: 80%;
+  }
+
+  canvas {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  nav h1 {
+    font-size: 1rem;
+  }
+
+  nav ul {
+    gap: 0.3rem;
+  }
+
+  .input-section,
+  .operations {
+    width: 95%;
+    padding: 0.8rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  canvas {
+    min-height: 200px;
+  }
+
+  .hero img {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+}
