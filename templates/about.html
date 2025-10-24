@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisualDSA – About</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .about-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: #111827;
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .about-container img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .about-container img:hover {
+      transform: scale(1.02);
+    }
+
+    .profile {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .profile img {
+      width: 250px;
+      flex-shrink: 0;
+      border-radius: 50%;
+    }
+
+    .profile-details {
+      flex: 1;
+    }
+
+    h1, h2 {
+      color: #1e3a8a;
+    }
+
+    a {
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Flex container for project section */
+    .project-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .project-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .project-image {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+    }
+
+    .project-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateX(50px);
+      opacity: 0;
+      animation: slideIn 1s forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <nav>
+  <h1 style="color: white;">VisualDSA</h1>
+
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/data-structures">Data Structures</a></li>
+    <li><a href="/visualize">Visualizer</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" style="flex: 1; padding: 20px">
+    <div class="about-container">
+      <h1>About the Developer – Karan Goplani</h1>
+
+      <div class="profile">
+        <img src="https://avatars.githubusercontent.com/u/92224864?v=4" alt="Karan Goplani" />
+        <div class="profile-details">
+          <p><strong>Name:</strong> Karan Goplani</p>
+          <p><strong>Role:</strong> MCA Student, Web Developer</p>
+          <p><strong>Skills:</strong> HTML, CSS, JavaScript, React JS, Python, Java, MySQL, SQL, UI/UX</p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/karangoplani72" target="_blank"> To view GitHub Profile Click Here</a></p>
+          <p><strong>Email:</strong> karangoplani72@gmail.com</p>
+        <p><strong>Portfolio:</strong><a href="https://karan-portfolio-self.vercel.app/" target ="_blank"> To View Portfolio Click here</a></p>
+        <p><strong>LinkedIn:</strong><a href="https://www.linkedin.com/in/karangoplani72/" target ="_blank"> To View LinkedIn Profile Click here</a></p>
+        </div>
+      </div>
+
+      <h2>About VisualDSA Project</h2>
+      <div class="project-section">
+        <div class="project-text">
+          <p>
+            VisualDSA is a personal project by Karan Goplani aimed at simplifying
+            the understanding of data structures and algorithms. It provides
+            real-time visualizations of insertion, deletion, searching, and
+            sorting operations across multiple data structures such as arrays,
+            linked lists, stacks, queues, trees, and graphs.
+          </p>
+          <p>
+            The platform is designed for students, educators, and developers who
+            want to interactively learn and teach algorithms. Every operation is
+            animated, with a focus on demonstrating the internal mechanics of data
+            structures along with the time complexity of operations.
+          </p>
+        </div>
+
+        <div class="project-image">
+          <img src="{{ url_for('static', filename='abou1.png') }}" alt="Project Illustration" />
+        </div>
+      </div>
+
+      <h2>Vision</h2>
+      <p>
+        The vision behind VisualDSA is to make algorithm learning interactive,
+        visual, and memorable. By turning abstract concepts into live
+        animations, users gain deeper insight into how data structures
+        function and optimize their coding skills.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 VisualDSA | Built with ❤️ by Karan Goplani</p>
+  </footer>
+</body>
+</html>

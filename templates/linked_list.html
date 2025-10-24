@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisualDSA – Linked List Visualizer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+  <h1>VisualDSA</h1>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/data-structures">Data Structures</a></li>
+    <li><a href="/visualize">Visualizer</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <aside>
+    <h2>Data Structures</h2>
+    <div class="ds-list">
+      <button onclick="location.href='/stack'">Stack</button>
+      <button onclick="location.href='/queue'">Queue</button>
+      <button onclick="location.href='/tree'">Tree</button>
+      <button onclick="location.href='/graph'">Graph</button>
+      <button onclick="location.href='/linked-list'">Linked List</button>
+      <button onclick="location.href='/hash-table'">Hash Table</button>
+      <button onclick="location.href='/array'">Array</button>
+      <button onclick="location.href='/heap'">Heap</button>
+    </div>
+  </aside>
+
+  <main>
+    <h2>Linked List Visualization</h2>
+
+    <div class="input-section">
+      <h3>Input Data</h3>
+      <input type="text" id="dataInput" placeholder="Enter value">
+      <br>
+      <button id="insertBtn">Insert</button>
+      <button id="deleteBtn">Delete</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <h3>Visualization</h3>
+    <canvas id="canvas"></canvas>
+  </main>
+</div>
+
+<footer>© 2025 VisualDSA | Built with ❤️ by Karan Goplani</footer>
+
+<script src="{{ url_for('static', filename='linked-list.js') }}"></script>
+</body>
+</html>

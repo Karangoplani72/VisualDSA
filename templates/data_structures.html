@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisualDSA – Data Structures</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .ds-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: #111827;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+   h2, h3 {
+      color: #1e3a8a;
+    }
+
+    a {
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .ds-section {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .ds-section img {
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .ds-section img:hover {
+      transform: scale(1.05);
+    }
+
+    .ds-text {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="project-name"></div>
+    <nav>
+  <h1>VisualDSA</h1>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/data-structures">Data Structures</a></li>
+    <li><a href="/visualize">Visualizer</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+  </header>
+  <br>
+<h1 style="text-align: center; color: #1e3a8a;">Data Structures</h1>
+
+<!-- Main Content -->
+  <main class="main-content" style="flex: 1; padding: 20px;">
+    <div class="ds-container">
+      
+
+      <!-- Array -->
+      <div class="ds-section" style="flex-direction: row;">
+        <img src="{{ url_for('static', filename='ds1.png') }}" alt="Array Illustration">
+        <div class="ds-text">
+          <h3>Array</h3>
+          <p>Array is a collection of elements stored in contiguous memory. VisualDSA shows how insertion, deletion, and searching happen step by step.</p>
+        </div>
+      </div>
+
+      <!-- Stack -->
+      <div class="ds-section" style="flex-direction: row-reverse;">
+        <img src="{{ url_for('static', filename='ds2.png') }}" alt="Stack Illustration">
+        <div class="ds-text">
+          <h3>Stack</h3>
+          <p>Stack follows Last In First Out (LIFO). VisualDSA animates push and pop operations, making the LIFO principle easy to understand.</p>
+        </div>
+      </div>
+
+      <!-- Queue -->
+      <div class="ds-section" style="flex-direction: row;">
+        <img src="{{ url_for('static', filename='ds3.png') }}" alt="Queue Illustration">
+        <div class="ds-text">
+          <h3>Queue</h3>
+          <p>Queue follows First In First Out (FIFO). VisualDSA animates enqueue and dequeue operations for better comprehension.</p>
+        </div>
+      </div>
+
+      <!-- Linked List -->
+      <div class="ds-section" style="flex-direction: row-reverse;">
+        <img src="{{ url_for('static', filename='ds4.png') }}" alt="Linked List Illustration">
+        <div class="ds-text">
+          <h3>Linked List</h3>
+          <p>A sequence of nodes where each node points to the next. VisualDSA demonstrates insertions, deletions, and traversals step by step.</p>
+        </div>
+      </div>
+
+      <!-- Tree -->
+      <div class="ds-section" style="flex-direction: row;">
+        <img src="{{ url_for('static', filename='ds5.png') }}" alt="Tree Illustration">
+        <div class="ds-text">
+          <h3>Tree (Binary Tree)</h3>
+          <p>Hierarchical data structure with a root node. VisualDSA animates traversal algorithms such as preorder, inorder, and postorder.</p>
+        </div>
+      </div>
+
+      <!-- Heap -->
+      <div class="ds-section" style="flex-direction: row-reverse;">
+        <img src="{{ url_for('static', filename='ds6.png') }}" alt="Heap Illustration">
+        <div class="ds-text">
+          <h3>Heap</h3>
+          <p>Heap is a binary tree with a specific property (max-heap or min-heap). VisualDSA shows insertion, deletion, and heapify operations dynamically.</p>
+        </div>
+      </div>
+
+      <!-- Graph -->
+      <div class="ds-section" style="flex-direction: row;">
+        <img src="{{ url_for('static', filename='ds7.png') }}" alt="Graph Illustration">
+        <div class="ds-text">
+          <h3>Graph</h3>
+          <p>A collection of nodes connected by edges. VisualDSA illustrates traversal algorithms such as BFS, DFS, and shows directed/undirected graphs.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 VisualDSA | Built with ❤️ by Karan Goplani</p>
+  </footer>
+
+</body>
+</html>

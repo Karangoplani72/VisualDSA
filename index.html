@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisualDSA</title>
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#f0f2f5; }
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#333; color:white; }
+.navbar .menu { display:flex; gap:15px; }
+.navbar .menu button { background:none; border:none; color:white; cursor:pointer; font-size:16px; }
+.container { display:flex; height:calc(100vh - 50px); }
+.side-panel { width:220px; background:#fff; padding:15px; box-shadow:2px 0 8px rgba(0,0,0,0.1); }
+.side-panel button { display:block; width:100%; margin:8px 0; padding:12px; cursor:pointer; border-radius:8px; border:none; background:#4CAF50; color:white; font-weight:bold; transition:0.3s; }
+.side-panel button:hover { background:#45a049; }
+.main-content { flex:1; padding:20px; display:flex; flex-direction:column; align-items:center; }
+.input-area { margin-bottom:15px; }
+.input-area input { padding:10px; width:250px; border-radius:8px; border:1px solid #ccc; font-size:16px; }
+.input-area button { padding:10px 15px; margin-left:10px; border:none; border-radius:8px; background:#4CAF50; color:white; font-weight:bold; cursor:pointer; transition:0.3s; }
+.input-area button:hover { background:#45a049; }
+.canvas { width:90%; height:400px; background:#e9ecef; border-radius:12px; position:relative; overflow:auto; margin-top:10px; display:flex; justify-content:center; align-items:flex-end; flex-wrap:wrap; padding:10px; }
+.node { background: linear-gradient(135deg,#6a11cb,#2575fc); color:white; padding:12px 20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3); margin:5px; transition: all 0.5s ease; position:relative; cursor:pointer; }
+.node:hover { transform: scale(1.1); }
+.arrow { font-weight:bold; margin:0 5px; color:#333; }
+.tree-node { position:absolute; text-align:center; padding:10px 15px; border-radius:10px; background:linear-gradient(135deg,#ff512f,#dd2476); color:white; box-shadow:0 4px 10px rgba(0,0,0,0.3); transition: all 0.5s ease; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="brand">VisualDSA</div>
+  <div class="menu">
+    <button onclick="showPage('info')">Project Info</button>
+    <button onclick="showPage('overview')">DS Overview</button>
+    <button onclick="showPage('visualization')">Visualization</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="side-panel">
+    <button onclick="selectDS('Stack')">Stack</button>
+    <button onclick="selectDS('Queue')">Queue</button>
+    <button onclick="selectDS('LinkedList')">Linked List</button>
+    <button onclick="selectDS('BinaryTree')">Binary Tree</button>
+  </div>
+
+  <div class="main-content">
+    <div class="input-area">
+      <input type="text" id="dataInput" placeholder="Enter comma-separated values">
+      <button onclick="visualizeDS()">Visualize</button>
+      <button onclick="insertData()">Insert</button>
+      <button onclick="deleteData()">Delete</button>
+    </div>
+    <div class="canvas" id="visualCanvas"></div>
+  </div>
+</div>
+
+<py-script>
+from js import document, alert
+from pyodide.ffi import create_proxy
+import math
+
+currentDS = "Stack"
+dsData = []
+
+canvas = document.getElementById("visualCanvas")
+
+def showPage(page):
+    alert(f"Switching to {page} page (implement content)")
+
+def selectDS(dsName):
+    global currentDS, dsData
+    currentDS = dsName
+    dsData = []
+    canvas.innerHTML = ""
+    alert(f"Selected DS: {dsName}")
+
+def visualizeDS(*args):
+    input_value = document.getElementById("dataInput").value
+    if not input_value:
+        alert("Enter data first!")
+        return
+    global dsData
+    dsData = [x.strip() for x in input_value.split(",")]
+    renderDS()
+
+def renderDS():
+    canvas.innerHTML = ""
+    if currentDS == "Stack":
+        for item in reversed(dsData):
+            div = document.createElement("div")
+            div.className = "node"
+            div.textContent = item
+            canvas.appendChild(div)
+    elif currentDS == "Queue":
+        for i, item in enumerate(dsData):
+            div = document.createElement("div")
+            div.className = "node"
+            div.textContent = item
+            canvas.appendChild(div)
+            if i < len(dsData)-1:
+                arrow = document.createElement("span")
+                arrow.className = "arrow"
+                arrow.textContent = "→"
+                canvas.appendChild(arrow)
+    elif currentDS == "LinkedList":
+        for i, item in enumerate(dsData):
+            div = document.createElement("div")
+            div.className = "node"
+            div.textContent = item
+            canvas.appendChild(div)
+            if i < len(dsData)-1:
+                arrow = document.createElement("span")
+                arrow.className = "arrow"
+                arrow.textContent = "→"
+                canvas.appendChild(arrow)
+    elif currentDS == "BinaryTree":
+        renderBinaryTree()
+
+def renderBinaryTree():
+    canvas.innerHTML = ""
+    if not dsData:
+        return
+    width = canvas.clientWidth
+    height = canvas.clientHeight
+    levels = math.ceil(math.log2(len(dsData)+1))
+    for index, item in enumerate(dsData):
+        level = math.floor(math.log2(index+1))
+        maxNodesLevel = 2**level
+        posInLevel = index - (2**level - 1)
+        x = width/(maxNodesLevel+1)*(posInLevel+1)
+        y = height/(levels+1)*(level+1)
+        node = document.createElement("div")
+        node.className = "tree-node"
+        node.textContent = item
+        node.style.left = f"{x}px"
+        node.style.top = f"{y}px"
+        canvas.appendChild(node)
+
+def insertData(*args):
+    value = prompt("Enter value to insert:")
+    if value:
+        dsData.append(value)
+        renderDS()
+
+def deleteData(*args):
+    if not dsData:
+        alert("Nothing to delete!")
+        return
+    if currentDS == "Stack":
+        dsData.pop()
+    elif currentDS == "Queue":
+        dsData.pop(0)
+    elif currentDS == "LinkedList":
+        dsData.pop(0)
+    elif currentDS == "BinaryTree":
+        dsData.pop()
+    renderDS()
+
+# Proxy for buttons
+document.getElementById("dataInput").addEventListener("keypress", create_proxy(lambda e: visualizeDS() if e.key == "Enter" else None))
+</py-script>
+
+</body>
+</html>

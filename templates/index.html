@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisualDSA – Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Home page additions */
+    .home-content {
+      max-width: 1200px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s forwards;
+    }
+    .hero.reverse {
+      flex-direction: reverse;
+    }
+    .hero .text {
+      flex: 1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .hero img {
+      width: 30%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .hero img:hover {
+      transform: scale(1.02);
+    }
+    .hero h1, .hero h2 {
+      color: #1e3a8a;
+      margin-bottom: 15px;
+    }
+
+    /* Stats section */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 0.5s;
+    }
+    .stats div {
+      flex: 1;
+    }
+    .stats h2 {
+      font-size: 2rem;
+      color: #1e3a8a;
+      margin-bottom: 5px;
+    }
+    h2#title {
+      text-align: center;
+      color: #1e3a8a;
+      margin-top: 20px;
+    }
+    /* Workflow Section */
+    .workflow {
+      display: flex;
+      justify-content: space-between;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      gap: 30px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 1s;
+    }
+    .workflow-step {
+      flex: 1 1 220px;
+      background: #e0f0ff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .workflow-step:hover {
+      transform: translateY(-5px);
+    }
+    .workflow-step h3 {
+      color: #1e3a8a;
+      margin-bottom: 10px;
+    }
+
+    /* Call to Action Buttons */
+    .cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 1.5s;
+    }
+    .cta a {
+      padding: 12px 25px;
+      background-color: #1e3a8a;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: opacity 0.3s;
+    }
+    .cta a:hover {
+      opacity: 0.85;
+    }
+
+    /* Code preview */
+    .code-preview {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 2s;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <nav>
+  <h1>VisualDSA</h1>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/data-structures">Data Structures</a></li>
+    <li><a href="/visualize">Visualizer</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" style="flex:1; padding:20px;">
+    <div class="home-content">
+
+      <!-- Hero Section -->
+      <div class="hero">
+        <div class="text">
+          <h1>Welcome to VisualDSA – Interactive Data Structure Visualizer</h1>
+          <p>
+            VisualDSA transforms abstract data structures and algorithms into live, interactive visualizations. 
+            Insert, delete, search, and sort data while seeing exactly how it moves in real-time.
+          </p>
+          <div class="cta">
+            <a href="{{ url_for('visualize') }}">Try Visualizer</a>
+            <a href="{{ url_for('data_structures') }}">Learn DSA</a>
+          </div>
+        </div>
+        <img src="{{ url_for('static', filename='hero1.png') }}" alt="Data Structures Visualization">
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats">
+        <div>
+          <h2>7+</h2>
+          <p>Data Structures Covered</p>
+        </div>
+        <div>
+          <h2>4</h2>
+          <p>Operations Supported</p>
+        </div>
+        <div>
+          <h2>100%</h2>
+          <p>Real-Time Animations</p>
+        </div>
+      </div>
+
+      <h2 id ="title">Workflow of VisualDSA</h2>
+      <!-- Workflow Section -->
+      <div class="workflow">
+        
+        <div class="workflow-step">
+          <h3>Select Structure</h3>
+          <p>Choose from Stack, Queue, Linked List, Tree, or Graph</p>
+        </div>
+        <div class="workflow-step">
+          <h3>Input Data</h3>
+          <p>Add your own data to see it in action</p>
+        </div>
+        <div class="workflow-step">
+          <h3>Visualize</h3>
+          <p>Watch real-time animations of operations</p>
+        </div>
+        <div class="workflow-step">
+          <h3>Analyze</h3>
+          <p>See time taken and operation insights for better understanding</p>
+        </div>
+      </div>
+
+      <!-- Code Preview -->
+      <div>
+        <h2 id="title">Python Example – Stack Insert</h2>
+        <br>
+        <br>
+        <div class="code-preview">
+<pre>
+stack = []
+
+# Insert elements
+stack.append(10)
+stack.append(20)
+stack.append(30)
+
+print("Stack:", stack)
+</pre>
+        </div>
+      </div>
+
+      <!-- Hero Image 2 -->
+      <div class="hero reverse">
+        <img src="{{ url_for('static', filename='hero2.png') }}" alt="Algorithm Animation">
+        <div class="text">
+          <h2>Observe & Learn</h2>
+          <p style="color:Black;">
+            VisualDSA is perfect for students, educators, and developers looking to deepen their understanding of data structures and algorithms through interactive learning.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 VisualDSA | Built with ❤️ by Karan Goplani</p>
+  </footer>
+
+</body>
+</html>

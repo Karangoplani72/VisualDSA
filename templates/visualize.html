@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisualDSA – Visualizer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+  
+</head>
+
+<body>
+  <nav>
+    <h1>VisualDSA</h1>
+    <ul>
+        <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+        <li><a href="{{ url_for('data_structures') }}">Data Structures</a></li>
+        <li><a href="{{ url_for('visualize') }}">Visualizer</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+      </ul>
+  </nav>
+
+  <div class="container">
+    <aside>
+      <h2>Data Structures</h2>
+      <div class="ds-list">
+    <button onclick="location.href='{{ url_for('stack_page') }}'">Stack</button>
+    <button onclick="location.href='{{ url_for('queue') }}'">Queue</button>
+    <button onclick="location.href='{{ url_for('tree') }}'">Tree</button>
+    <button onclick="location.href='{{ url_for('graph') }}'">Graph</button>
+    <button onclick="location.href='{{ url_for('linked_list') }}'">Linked List</button>
+    <button onclick="location.href='{{ url_for('hash_table') }}'">Hash Table</button>
+    <button onclick="location.href='{{ url_for('array') }}'">Array</button>
+    <button onclick="location.href='{{ url_for('heap') }}'">Heap</button>
+</div>
+
+    </aside>
+
+    <main>
+      <h2>Visualizer Hub</h2>
+      <p>Select a data structure from the left panel to start visualizing.</p>
+      <img src="https://via.placeholder.com/500x300?text=Visualizer+Preview" alt="Visualizer Preview" style="border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" />
+    </main>
+  </div>
+
+  <footer>© 2025 VisualDSA | Built with ❤️ by Karan Goplani</footer>
+</body>
+</html>
